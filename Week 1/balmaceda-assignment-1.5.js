@@ -9,7 +9,7 @@
 
 const header = require('../balmaceda-header.js');
 
-console.log(header.display("Griselda", "Balmaceda", "Assignment 1.3"));
+console.log(header.display("Griselda", "Balmaceda", "Assignment 1.5"));
 
 console.log('\n')
 
