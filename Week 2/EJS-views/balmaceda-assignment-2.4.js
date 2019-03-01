@@ -1,4 +1,4 @@
-//requiring needed modules
+//adding required modules
 var http = require("http");
 var express = require("express");
 var path = require("path");
