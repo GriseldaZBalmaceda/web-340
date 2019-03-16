@@ -1,3 +1,12 @@
+/*
+============================================
+; Title:  Assignment 4.2
+; Author: Griselda Balmaceda
+; Date:   15 March 2019
+; Description:JSON API
+;===========================================
+*/
+
 //adding modules
 var express = require("express");
 var http = require("http");
