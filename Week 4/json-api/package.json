@@ -1,0 +1,7 @@
+{
+    "name": "json-api",
+    "author": "GriseldaBalmaceda",
+    "dependencies": {
+        "express": "^4.16.4"
+    }
+}
