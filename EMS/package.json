@@ -1,0 +1,10 @@
+{
+    "name": "ejs-views",
+    "author": "Griselda Balmaceda",
+    "private": true,
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "morgan": "^1.9.1"
+    }
+}
