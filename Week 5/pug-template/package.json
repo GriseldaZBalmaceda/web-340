@@ -1,0 +1,10 @@
+{
+  "name": "pug-template",
+  "author": "Griselda Balmaceda",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}
