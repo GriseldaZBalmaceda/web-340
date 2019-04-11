@@ -14,6 +14,7 @@ var logger = require("morgan");
 var Employee = require("./models/employee");
 var app = express();
 var mongoose = require('mongoose')
+var helmet = require('helmet')
 
 //establish database connections
 var mongoDB = "mongodb+srv://user1001:WFd0DjcMnvQGv52v@ems-merh9.mongodb.net/test?retryWrites=true";
@@ -31,14 +32,24 @@ db.once("open", function () {
 
 //setting view engine
 app.set("views", path.resolve(__dirname, "views"));
-app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
+
+//use statements
 app.use(logger("short"));
+app.use(express.static(__dirname + '/public'));
+// app.use(helmet.xssFilter());
 
 //employee model 
 var employee=new Employee({
     firstName:'Griselda',
     lastName:'Balmaceda'
+})
+
+//http calls 
+app.get("/",function(request,response){
+    response.render("index",{
+        message:'XSS Prevention Example'
+    })
 })
 
 //creating node web server
