@@ -6,14 +6,13 @@
 ; Description: File for the Employee database model
 ;===========================================
 */
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //employee scheema
 let EmployeeSchema = new Schema({
-    firstName:{type:String,required:true},
-    lastName:{type:String,required:true}
+    name:{type:String,required:true},
+ 
 })
 
 //exporting model 

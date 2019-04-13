@@ -25,6 +25,9 @@ li>.fas,.far{
 margin-right: 5px;
 font-size: 25px;
 }
+a{
+   color:white!important;
+}
 ul{
    line-height: 100px;
 }
@@ -37,4 +40,9 @@ ul{
    width: 100%;
    text-align: center;
    margin-top: 20%;
+}
+.card{
+   margin:auto;
+   width:50%;
+   margin-top: 15%;
 }
