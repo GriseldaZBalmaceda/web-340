@@ -24,7 +24,6 @@ var mongoDB = "mongodb+srv://user1001:WFd0DjcMnvQGv52v@ems-merh9.mongodb.net/tes
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });
-
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connected error: "));
@@ -67,7 +66,7 @@ app.use(helmet.xssFilter());
 
 
 //routing
-
+//Rendering Index/Home page
 app.get("/", function (req, res) {
     Employee.find({}, function (err, employees) {
         if (err) {
@@ -82,17 +81,22 @@ app.get("/", function (req, res) {
         }
     });
 });
-
+//rendering new , user can creat new employee 
 app.get("/new", function (request, response) {
     response.render("new", {
         title: 'EMS|New'
     });
 });
-// app.get("/list",function(req,res){
-//     res.render("list",{
-//         title:'EMS|List'
-//     })
-// });
+//render list where employees are listed
+app.get("/list",function(req,res){
+    Employee.find({},function(error,employees){
+        if(error)throw error;
+        res.render("list",{
+            title:'Employee List',
+            employee:employees
+        })
+    })
+})
 
 app.post("/process", function (req, res) {
     //get requests data 
@@ -114,19 +118,6 @@ app.post("/process", function (req, res) {
     });
 
 })
-
-app.get("/list",function(req,res){
-    Employee.find({},function(error,employees){
-        if(error)throw error;
-        res.render("list",{
-            title:'Employee List',
-            employee:employees
-        })
-    })
-})
-
-
-
 
 
 
