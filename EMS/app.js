@@ -88,13 +88,36 @@ app.get("/new", function (request, response) {
     });
 });
 //render list where employees are listed
-app.get("/list",function(req,res){
-    Employee.find({},function(error,employees){
-        if(error)throw error;
-        res.render("list",{
-            title:'Employee List',
-            employee:employees
+app.get("/list", function (req, res) {
+    Employee.find({}, function (error, employees) {
+        if (error) throw error;
+        res.render("list", {
+            title: 'Employee List',
+            employee: employees
         })
+    })
+})
+
+app.get("/view/:queryName", function (req, res) {
+    const queryName = req.params['queryName'];
+    Employee.find({
+        'name': queryName
+    }, function (err, employees) {
+        if (err) {
+            console.log(err);
+            throw err;
+        } else {
+            console.log(employee)
+            if (employees.length > 0) {
+                res.render("view", {
+                    title: 'EMS | View',
+                    fruit: employees
+                })
+
+            } else {
+                res.redirect('/')
+            }
+        }
     })
 })
 
