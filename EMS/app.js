@@ -97,36 +97,12 @@ app.get("/list", function (req, res) {
         })
     })
 })
-
-app.get("/view/:queryName", function (req, res) {
-    const queryName = req.params['queryName'];
-    Employee.find({
-        'name': queryName
-    }, function (err, employees) {
-        if (err) {
-            console.log(err);
-            throw err;
-        } else {
-            console.log(employee)
-            if (employees.length > 0) {
-                res.render("view", {
-                    title: 'EMS | View',
-                    fruit: employees
-                })
-
-            } else {
-                res.redirect('/')
-            }
-        }
-    })
-})
-
 app.post("/process", function (req, res) {
     //get requests data 
     const employeeName = req.body.txtName;
     console.log(employeeName)
     //employee model
-    var employee = new Employee({
+    let employee = new Employee({
         name: employeeName
     });
     //save employee
@@ -141,10 +117,31 @@ app.post("/process", function (req, res) {
     });
 
 })
+app.get("/view/:queryName", function (req, res) {
+   var queryName = req.params['queryName']
+    Employee.find({'name': queryName}, function (err, employees) {
+        if (err) {
+            console.log(err);
+    
+        } else {
+            console.log(employees)
+            if (employees.length > 0) {
+                res.render("view", {
+                    title: 'EMS | View',
+                    employee:employees
+                  
+                })
+
+            } else {
+                res.redirect('/')
+            }
+        }
+    })
+})
+
+
 
 
 
 //creating node web server
-http.createServer(app).listen(8080, function () {
-    console.log("Application started on port 8080!")
-});
+http.createServer(app).listen(app.get("port"), function() { console.log("Application started on port " + app.get("port")) });
